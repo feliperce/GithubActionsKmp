@@ -45,7 +45,7 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         uses: actions/upload-artifact@v3
         with:
-          name: linux-artifact
+          name: android-artifact
           path: /home/runner/work/GithubActionsKmp/GithubActionsKmp/composeApp/build/outputs/apk/release/*.apk 
 
       - name: Upload macOS artifact
