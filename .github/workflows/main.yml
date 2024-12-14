@@ -18,13 +18,14 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          java-version: '21' 
+          java-version: '17' 
           distribution: 'temurin'
 
       - name: Build for ${{ matrix.os }}
-        run: ./gradlew assembleRelease 
-      - name: Build Desktop
-        run: ./gradlew packageDistributionForCurrentOS 
+        run: ./gradlew clean build
+
+      - name: Package for ${{ matrix.os }}
+        run: ./gradlew packageDistributionForCurrentOS
 
       - name: Upload Linux artifact
         if: matrix.os == 'ubuntu-latest'
@@ -47,7 +48,7 @@ jobs:
           name: windows-artifact
           path: windows/build/libs/app-windows.exe 
 
-      - name: Upload Android artifact
+      - name: Upload Android artifact 
         uses: actions/upload-artifact@v3
         with:
           name: android-artifact
