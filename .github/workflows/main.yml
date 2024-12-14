@@ -77,9 +77,9 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            '*.apk' 
-            '*.deb'
-            '*.dmg'
-            '*.msi'
+            *.deb  # Arquivos .deb
+            *.dmg  # Arquivos .dmg
+            *.msi  # Arquivos .exe
+            *.apk  # Arquivos .apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
