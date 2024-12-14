@@ -22,7 +22,6 @@ jobs:
           distribution: 'temurin'
 
       - name: Build for ${{ matrix.os }}
-      - name: Build Android
         run: ./gradlew assembleRelease 
       - name: Build Desktop
         run: ./gradlew packageDistributionForCurrentOS 
