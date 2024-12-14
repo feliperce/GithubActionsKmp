@@ -26,13 +26,24 @@ jobs:
 
       - name: Package for ${{ matrix.os }}
         run: ./gradlew composeApp:packageDistributionForCurrentOS
+        
+      - name: Build Android
+        if: matrix.os == 'ubuntu-latest'
+        run: ./gradlew composeApp:assembleRelease
 
       - name: Upload Linux artifact
         if: matrix.os == 'ubuntu-latest'
         uses: actions/upload-artifact@v3
         with:
           name: linux-artifact
-          path: /home/runner/work/GithubActionsKmp/GithubActionsKmp/composeApp/build/compose/binaries/main/deb/io.feliperce.github.githubactionskmp_1.0.0-1_amd64.deb 
+          path: /home/runner/work/GithubActionsKmp/GithubActionsKmp/composeApp/build/compose/binaries/main/deb/io.feliperce.github.githubactionskmp_1.0.0-1_amd64.deb
+
+      - name: Upload Android artifact
+        if: matrix.os == 'ubuntu-latest'
+        uses: actions/upload-artifact@v3
+        with:
+          name: linux-artifact
+          path: /home/runner/work/GithubActionsKmp/GithubActionsKmp/composeApp/build/outputs/apk/release/*.apk 
 
       - name: Upload macOS artifact
         if: matrix.os == 'macOS-latest'
