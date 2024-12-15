@@ -36,28 +36,28 @@ jobs:
 
       - name: Upload Linux artifact
         if: matrix.os == 'ubuntu-latest'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: linux-artifact
           path: /home/runner/work/GithubActionsKmp/GithubActionsKmp/composeApp/build/compose/binaries/main/deb/*.deb
 
       - name: Upload Android artifact
         if: matrix.os == 'ubuntu-latest'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: android-artifact
           path: /home/runner/work/GithubActionsKmp/GithubActionsKmp/composeApp/build/outputs/apk/release/*.apk 
 
       - name: Upload macOS artifact
         if: matrix.os == 'macOS-latest'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: macos-artifact
           path: /Users/runner/work/GithubActionsKmp/GithubActionsKmp/composeApp/build/compose/binaries/main/dmg/*.dmg
 
       - name: Upload Windows artifact
         if: matrix.os == 'windows-latest'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: windows-artifact
           path: D:\a\GithubActionsKmp\GithubActionsKmp\composeApp\build\compose\binaries\main\msi\*.msi
@@ -70,7 +70,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Download all artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
